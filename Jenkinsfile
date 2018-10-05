@@ -106,6 +106,7 @@ node {
             userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']],
             doGenerateSubmoduleConfigurations: false
         ])
+        puts scm.branches
         }
 
         stage('Build') {
