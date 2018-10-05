@@ -99,7 +99,13 @@ def populateGlobalVariables = {
 node {
     try {
         stage('Checkout') {
-            checkout scm
+            checkout([
+            $class: 'GitSCM',
+            branches: scm.branches,
+            extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
+            userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']],
+            doGenerateSubmoduleConfigurations: false
+        ])
         }
 
         stage('Build') {
@@ -124,7 +130,8 @@ node {
 
                 buildColor = "danger"
                 def failedTestsString = getFailedTests()
-
+                echo "Aqui esta o branch"
+                echo env.GIT_BRANCH
                 notifySlack("", slackNotificationChannel, [
                     [
                         title: "${jobName}, build #${env.BUILD_NUMBER}",
