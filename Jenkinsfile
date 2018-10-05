@@ -99,17 +99,15 @@ def populateGlobalVariables = {
 node {
     try {
         stage('Checkout') {
-            checkout([
-            $class: 'GitSCM',
-            branches: scm.branches,
-            extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
-            userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']],
-            doGenerateSubmoduleConfigurations: false
-        ])
-        for (it in scm.branches) {
-        echo "${it}"
-        }
-        
+       checkout([
+           $class: 'GitSCM',
+           branches: [[name: 'master']],
+           doGenerateSubmoduleConfigurations: false,
+           extensions: [],
+           submoduleCfg: [],
+           userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']]])
+
+        echo scm.branches
         }
 
         stage('Build') {
