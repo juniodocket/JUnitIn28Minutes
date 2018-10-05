@@ -158,6 +158,8 @@ node {
                     ]
                 ])
             } else {
+                echo "Aqui esta o branch"
+                echo env.GIT_BRANCH
                 notifySlack("", slackNotificationChannel, [
                     [
                         title: "${jobName}, build #${env.BUILD_NUMBER}",
