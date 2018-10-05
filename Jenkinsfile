@@ -106,7 +106,10 @@ node {
             userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']],
             doGenerateSubmoduleConfigurations: false
         ])
-        echo scm.branches
+        for (it in scm.branches) {
+        echo "${it}"
+        }
+        
         }
 
         stage('Build') {
