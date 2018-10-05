@@ -1,0 +1,6 @@
+target/
+.settings/
+.idea/
+junit-example.iml
+.project
+.classpath
