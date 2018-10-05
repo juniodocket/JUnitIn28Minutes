@@ -6,7 +6,7 @@ def slackNotificationChannel = 'poc-jenkins'     // ex: = "builds"
 
 def notifySlack(text, channel, attachments) {
     def slackURL = 'https://hooks.slack.com/services/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'
-    def jenkinsIcon = 'https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png'
+    def jenkinsIcon = 'http://mirrors.jenkins.io/art/jenkins-logo/48x48/headshot.png'
 
     def payload = JsonOutput.toJson([text: text,
         channel: channel,
