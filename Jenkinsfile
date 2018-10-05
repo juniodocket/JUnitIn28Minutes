@@ -106,8 +106,6 @@ node {
            extensions: [],
            submoduleCfg: [],
            userRemoteConfigs: [[url: 'git@github.com:juniodocket/JUnitIn28Minutes.git']]])
-
-        echo scm.branches
         }
 
         stage('Build') {
