@@ -12,7 +12,7 @@ def nebulaRelease = "-x prepare -x release snapshot ${nebulaReleaseScope}"
 def gradleDefaultSwitches = "${speedUp} ${nebulaRelease}"
 def gradleAdditionalTestTargets = "integrationTest"
 def gradleAdditionalSwitches = "shadowJar"
-def slackNotificationChannel = "[CHANNEL_NAME]"
+def slackNotificationChannel = "poc-jenkins"
 def author = ""
 def message = ""
 def testSummary = ""
@@ -29,7 +29,7 @@ def isResultGoodForPublishing = { ->
 }
 
 def notifySlack(text, channel, attachments) {
-    def slackURL = '[SLACK_WEBHOOK_URL]'
+    def slackURL = 'https://hooks.slack.com/services/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'
     def jenkinsIcon = 'https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png'
 
     def payload = JsonOutput.toJson([text: text,
