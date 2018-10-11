@@ -33,7 +33,7 @@ def notifySlack(text, channel, attachments) {
     def jenkinsIcon = 'https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png'
 
     def payload = JsonOutput.toJson([text: text,
-        channel: channel,
+        channel: "poc-jenkins",
         username: "Jenkins",
         icon_url: jenkinsIcon,
         attachments: attachments
@@ -130,8 +130,6 @@ node {
 
                 buildColor = "danger"
                 def failedTestsString = getFailedTests()
-                echo "Aqui esta o branch"
-                echo env.GIT_BRANCH
                 notifySlack("", slackNotificationChannel, [
                     [
                         title: "${jobName}, build #${env.BUILD_NUMBER}",
